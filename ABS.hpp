@@ -41,3 +41,68 @@ private:
     T* array_;
     static constexpr size_t scale_factor_ = 2;
 };
+
+template <typename T>
+ABS<T>::ABS()
+{
+}
+
+template <typename T>
+ABS<T>::ABS(const size_t capacity)
+{
+}
+
+template <typename T>
+ABS<T>::ABS(const ABS& other)
+{
+}
+
+template <typename T>
+ABS<T>& ABS<T>::operator=(const ABS& rhs)
+{
+}
+
+template <typename T>
+ABS<T>::ABS(ABS&& other) noexcept
+{
+}
+
+template <typename T>
+ABS<T>& ABS<T>::operator=(ABS&& rhs) noexcept
+{
+}
+
+template <typename T>
+ABS<T>::~ABS() noexcept
+{
+}
+
+template <typename T>
+size_t ABS<T>::getSize() const noexcept
+{
+}
+
+template <typename T>
+size_t ABS<T>::getMaxCapacity() const noexcept
+{
+}
+
+template <typename T>
+T* ABS<T>::getData() const noexcept
+{
+}
+
+template <typename T>
+void ABS<T>::push(const T& data)
+{
+}
+
+template <typename T>
+T ABS<T>::peek() const
+{
+}
+
+template <typename T>
+T ABS<T>::pop()
+{
+}

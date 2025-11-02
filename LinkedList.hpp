@@ -1,25 +1,34 @@
 #pragma once
-#include <iostream>
-using namespace std;
-
-
 
 template <typename T>
-class LinkedList {
+class LinkedList : public ContainerInterface<T>
+{
+	struct Node
+	{
+		T data;
+		Node* prev = nullptr;
+		Node* next = nullptr;
+		Node(const T& data) : data(data) {}
+	};
 public:
 	// Behaviors
 	void printForward() const;
 	void printReverse() const;
 
 	// Accessors
-	[[nodiscard]] unsigned int getCount() const;
-	Node* getHead();
-	const Node* getHead() const;
-	Node* getTail();
-	const Node* getTail() const;
+	Node* getHead() { return head; }
+	const Node* getHead() const { return head; }
+	Node* getTail() { return tail; }
+	const Node* getTail() const { return tail; }
 
 	// Insertion
-	void addHead(const T& data);
+	void addHead(const T& data)
+	{
+		if (head)
+		{
+			Node* temp = new Node(data);
+		}
+	}
 	void addTail(const T& data);
 
 	// Removal
@@ -37,12 +46,12 @@ public:
 	LinkedList(LinkedList<T>&& other) noexcept;
 	~LinkedList();
 
+
 private:
 	// Stores pointers to first and last nodes and count
 	Node* head;
 	Node* tail;
-	unsigned int count;
-
+	std::size_t size;
 };
 
 

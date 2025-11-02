@@ -4,9 +4,6 @@
 #include <stdexcept>
 #include "Interfaces.hpp"
 
-// Technically bad, but size_t isn't likely to conflict with any client code.
-using std::size_t;
-
 template<typename T>
 class ABQ : public QueueInterface<T>{
 

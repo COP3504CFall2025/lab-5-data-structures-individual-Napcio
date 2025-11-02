@@ -1,13 +1,13 @@
 #ifdef MAIN
 
 #include "ABDQ.hpp"
-#include "ABQ.hpp"
-#include "ABS.hpp"
+// #include "ABQ.hpp"
+// #include "ABS.hpp"
 #include "Interfaces.hpp"
-#include "LinkedList.hpp"
-#include "LLDQ.hpp"
-#include "LLQ.hpp"
-#include "LLS.hpp"
+// #include "LinkedList.hpp"
+// #include "LLDQ.hpp"
+// #include "LLQ.hpp"
+// #include "LLS.hpp"
 #include <iostream>
 
 /*
@@ -19,7 +19,27 @@
 */
 
 int main() {
+    ABDQ<int> test;
+    test.pushBack(2);
+    test.pushBack(3);
+    test.pushBack(4);
+    test.pushFront(1);
+    test.pushBack(5);
+    test.pushFront(0);
+    test.printData();
 
+    ABDQ test2 = std::move(test);
+    test.printData();
+    test2.printData();
+
+    // std::cout << test.popBack();
+    // test.pushBack(3);
+
+    std::cout << "\ndebugginggg --- \n";
+    while (test2.getSize() != 0 )
+    {
+        std::cout << test2.popFront() << "  ";
+    }
 
     return 0;
 }
