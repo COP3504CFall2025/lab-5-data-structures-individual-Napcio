@@ -64,7 +64,10 @@ private:
 
 public:
     // Big 5
-    ABDQ() = default;
+    ABDQ()
+    {
+        ABDQ(1);
+    }
     explicit ABDQ(std::size_t capacity) : capacity_(capacity)
     {
         data_ = new T[capacity];
