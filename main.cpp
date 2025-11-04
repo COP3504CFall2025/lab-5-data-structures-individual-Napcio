@@ -18,26 +18,15 @@
 */
 
 int main() {
-    LinkedList<int> test;
-    test.addTail(1);
-    test.addTail(2);
-    test.addTail(3);
-    test.addHead(0);
-    test.addHead(-1);
-    test.printForward();
-    test.clear();
-    test.printForward();
-    test.addHead(0);
-    test.addHead(1);
-    test.addHead(2);
-    test.printReverse();
+    ABDQ<int> test;
+    std::cout << test.getMaxCapacity();
 
 
-    std::cout << "\ndebugginggg --- \n";
-    while (test.getSize() != 0 )
-    {
-        std::cout << test.removeTail() << "  ";
-    }
+    // std::cout << "\ndebugginggg --- \n";
+    // while (test.getSize() != 0 )
+    // {
+    //     std::cout << test.removeTail() << "  ";
+    // }
     // test.getHead();
 
     return 0;
