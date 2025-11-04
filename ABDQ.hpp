@@ -77,7 +77,7 @@ public:
         back_ = other.back_;
 
         data_ = new T[capacity_];
-        for (int i = 0; i < size_; i++)
+        for (size_t i = 0; i < size_; i++)
         {
             data_[toRawIndex(i)] = other.data_[toRawIndex(i)];
         }
