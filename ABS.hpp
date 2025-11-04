@@ -20,6 +20,10 @@ public:
     {
         return deque_.getSize();
     }
+    [[nodiscard]] size_t getMaxCapacity() const noexcept
+    {
+        return deque_.getMaxCapacity();
+    }
 
     // Push item onto the stack
     void push(const T& data) override

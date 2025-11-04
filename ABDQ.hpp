@@ -194,6 +194,10 @@ public:
     {
         return size_;
     }
+    [[nodiscard]] std::size_t getMaxCapacity() const noexcept
+    {
+        return capacity_;
+    }
 
     // Debugging function
     void printData()

@@ -21,6 +21,10 @@ public:
     {
         return deque_.getSize();
     }
+    [[nodiscard]] size_t getMaxCapacity() const noexcept
+    {
+        return deque_.getMaxCapacity();
+    }
 
     // Insertion
     void enqueue(const T& data) override
