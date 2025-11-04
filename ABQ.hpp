@@ -3,37 +3,40 @@
 #include <cstddef>
 #include <stdexcept>
 #include "Interfaces.hpp"
+#include "ABDQ.hpp"
 
 template<typename T>
 class ABQ : public QueueInterface<T>{
 
-    size_t capacity_;
-    size_t curr_size_;
-    T* array_;
-    static constexpr size_t scale_factor_ = 2;
+    ABDQ<T> deque_;
 
 public:
     // Constructors + Big 5
-    ABQ();
-    explicit ABQ(const size_t capacity);
-    ABQ(const ABQ& other);
-    ABQ& operator=(const ABQ& rhs);
-    ABQ(ABQ&& other) noexcept;
-    ABQ& operator=(ABQ&& rhs) noexcept;
-    ~ABQ() noexcept override;
+    // No big 5 needed as ABDQ manages its own memory
+    ABQ() : deque_() {}
+    explicit ABQ(const size_t capacity) : deque_(capacity) {}
 
     // Getters
-    [[nodiscard]] size_t getSize() const noexcept override;
-    [[nodiscard]] size_t getMaxCapacity() const noexcept;
-    [[nodiscard]] T* getData() const noexcept;
+    [[nodiscard]] size_t getSize() const noexcept override
+    {
+        return deque_.getSize();
+    }
 
     // Insertion
-    void enqueue(const T& data) override;
+    void enqueue(const T& data) override
+    {
+        deque_.pushBack(data);
+    }
 
     // Access
-    T peek() const override;
+    T peek() const override
+    {
+        return deque_.front();
+    }
 
     // Deletion
-    T dequeue() override;
-
+    T dequeue() override
+    {
+        return deque_.popFront();
+    }
 };

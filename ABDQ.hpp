@@ -94,6 +94,8 @@ public:
     }
     ABDQ& operator=(const ABDQ& other)
     {
+        if (this == &other)
+            return *this;
         size_ = other.size_;
         capacity_ = other.capacity_;
         front_ = other.front_;
@@ -102,7 +104,7 @@ public:
         T* tempData = new T[capacity_];
         delete[] data_;
         data_ = tempData;
-        for (int i = 0; i < size_; i++)
+        for (size_t i = 0; i < size_; i++)
         {
             data_[toRawIndex(i)] = other.data_[toRawIndex(i)];
         }
@@ -150,7 +152,7 @@ public:
     {
         if (size_ < 1)
         {
-            throw std::out_of_range("Container is empty");
+            throw std::runtime_error("Container is empty");
         }
         T temp = data_[front_];
         front_ = toRawIndex(1); // Evaluates to the next element forward
@@ -161,7 +163,7 @@ public:
     {
         if (size_ < 1)
         {
-            throw std::out_of_range("Container is empty");
+            throw std::runtime_error("Container is empty");
         }
         T temp = data_[back_];
         back_ = toRawIndex(back_ - 1 - front_); // Evaluates to back - 1 but wrapped correctly
