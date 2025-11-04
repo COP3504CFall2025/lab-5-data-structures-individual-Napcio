@@ -174,10 +174,18 @@ public:
     // Access
     const T& front() const override
     {
+        if (size_ < 1)
+        {
+            throw std::runtime_error("Container is empty");
+        }
         return data_[front_];
     }
     const T& back() const override
     {
+        if (size_ < 1)
+        {
+            throw std::runtime_error("Container is empty");
+        }
         return data_[back_];
     }
 

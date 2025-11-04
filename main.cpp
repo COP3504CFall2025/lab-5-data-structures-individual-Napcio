@@ -38,6 +38,7 @@ int main() {
     {
         std::cout << test.removeTail() << "  ";
     }
+    // test.getHead();
 
     return 0;
 }

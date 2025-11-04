@@ -48,10 +48,38 @@ public:
 	}
 
 	// Accessors
-	Node* getHead() { return head_; }
-	const Node* getHead() const { return head_; }
-	Node* getTail() { return tail_; }
-	const Node* getTail() const { return tail_; }
+	Node* getHead()
+	{
+		if (size_ < 1)
+		{
+			throw std::runtime_error("Container is empty");
+		}
+		return head_;
+	}
+	const Node* getHead() const
+	{
+		if (size_ < 1)
+		{
+			throw std::runtime_error("Container is empty");
+		}
+		return head_;
+	}
+	Node* getTail()
+	{
+		if (size_ < 1)
+		{
+			throw std::runtime_error("Container is empty");
+		}
+		return tail_;
+	}
+	const Node* getTail() const
+	{
+		if (size_ < 1)
+		{
+			throw std::runtime_error("Container is empty");
+		}
+		return tail_;
+	}
 
 	// Insertion
 	void addHead(const T& data)
