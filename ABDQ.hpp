@@ -57,9 +57,7 @@ private:
             }
             resize(newCapacity, newSize);
         }
-        else if (newSize < (capacity_ / DOWNSCALE_FACTOR) &&
-            std::is_same_v<T, float> // gradescope..
-            )
+        else if (newSize < (capacity_ / DOWNSCALE_FACTOR))
         { // Downscale
             std::size_t newCapacity = std::max<std::size_t>(1, capacity_);
             while (newCapacity / DOWNSCALE_FACTOR > newSize)
