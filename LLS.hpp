@@ -16,7 +16,7 @@ public:
     // Insertion
     void push(const T& item) override
     {
-        list.addTail();
+        list.addTail(item);
     }
 
     // Deletion
