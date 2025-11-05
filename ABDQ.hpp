@@ -13,7 +13,7 @@ private:
     std::size_t capacity_ = 0;  // total allocated capacity
     std::size_t size_ = 0;      // number of stored elements
     std::size_t front_ = 0;     // index of front element
-    std::size_t back_ = 0;      // index after the last element (circular)
+    std::size_t back_ = 0;      // index of the last element (circular)
 
     static constexpr std::size_t SCALE_FACTOR = 2;
 
@@ -24,30 +24,47 @@ private:
         return wrappedIndex < 0 ? capacity_ + wrappedIndex : wrappedIndex;
     }
 
+    // Expects size_ and capacity_ to be referring to the old array
+    void resize(std::size_t newCapacity)
+    {
+        T* newData = new T[newCapacity];
+        for (std::size_t i = 0; i < size_ && i < newCapacity; i++) // size_ still has the size of the old data_
+        {
+            std::size_t rawIndex = toRawIndex(i); // on a separate line for debugging purposes
+            newData[i] = std::move(data_[rawIndex]);
+        }
+
+        delete[] data_;
+        data_ = newData;
+
+        // Set after transfer so that we can still index the old data_ correctly when transferring data
+        capacity_ = newCapacity;
+        front_ = 0;
+        back_ = (size_ == 0) ? 0 : size_ - 1;
+    }
+
     // Sets the size of the array, adjusting capacity and reallocating data_ as necessary
     void adjustSize(std::size_t newSize)
     {
-        if (newSize > capacity_)
-        { // Resize data_
+        if (newSize > capacity_) // Upscale
+        {
             std::size_t newCapacity = std::max<std::size_t>(1, capacity_);
             while (newCapacity < newSize)
             {
                 newCapacity *= 2;
             }
-            T* newData = new T[newCapacity];
-            for (std::size_t i = 0; i < size_; i++) // size_ still has the size of the old data_
+            resize(newCapacity);
+        }
+        else if (newSize <= (capacity_ / 2) && newSize >= 1) // Downscale
+        {
+            std::cout << "im gonna downscale. Do not downscale. Im gonna do it! eughhhhhhhhh\n";
+            printData();
+            std::size_t newCapacity = std::max<std::size_t>(1, capacity_);
+            while (newCapacity / 2 >= newSize)
             {
-                size_t rawIndex = toRawIndex(i); // on a separate line for debugging purposes
-                newData[i] = std::move(data_[rawIndex]);
+                newCapacity /= 2;
             }
-
-            delete[] data_;
-            data_ = newData;
-
-            // Set after transfer so that we can still index the old data_ correctly when transferring data
-            capacity_ = newCapacity;
-            front_ = 0;
-            back_ = size_ - 1;
+            resize(newCapacity);
         }
         size_ = newSize;
     }

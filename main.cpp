@@ -18,16 +18,24 @@
 */
 
 int main() {
-    ABDQ<int> test;
+    ABS<int> test;
+    test.push(1);
+    test.push(2);
+    std::cout << test.getMaxCapacity();
+    test.push(3);
+    test.push(4);
+    std::cout << test.getMaxCapacity();
+    test.pop();
+    test.pop();
     std::cout << test.getMaxCapacity();
 
 
-    // std::cout << "\ndebugginggg --- \n";
-    // while (test.getSize() != 0 )
-    // {
-    //     std::cout << test.removeTail() << "  ";
-    // }
-    // test.getHead();
+
+    std::cout << "\ndebugginggg --- \n";
+    while (test.getSize() != 0 )
+    {
+        std::cout << test.pop() << "  ";
+    }
 
     return 0;
 }
