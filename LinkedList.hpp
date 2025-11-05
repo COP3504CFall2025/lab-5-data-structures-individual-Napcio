@@ -222,6 +222,10 @@ public:
 	{
 		return size_;
 	}
+	[[nodiscard]] std::size_t getCount() const noexcept // im not inconsistent the readme is >:(
+	{
+		return getSize();
+	}
 };
 
 
