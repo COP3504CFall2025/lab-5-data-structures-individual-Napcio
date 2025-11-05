@@ -16,7 +16,7 @@ private:
     std::size_t back_ = 0;      // index of the last element (circular)
 
     static constexpr std::size_t SCALE_FACTOR = 2;
-    static constexpr std::size_t DOWNSCALE_FACTOR = 4;
+    static constexpr std::size_t DOWNSCALE_FACTOR = 2;
 
     // Passing a negative index gets the element before front
     size_t toRawIndex(int index)
