@@ -40,10 +40,18 @@ public:
     // Element Accessors
     const T& front() const override
     {
+        if (list.getSize() < 1)
+        {
+            throw std::runtime_error("Container is empty");
+        }
         return list.getHead()->data;
     }
     const T& back() const override
     {
+        if (list.getSize() < 1)
+        {
+            throw std::runtime_error("Container is empty");
+        }
         return list.getTail()->data;
     }
 

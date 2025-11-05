@@ -59,18 +59,10 @@ public:
 	}
 	const Node* getHead() const
 	{
-		if (size_ < 1)
-		{
-			throw std::runtime_error("Container is empty");
-		}
 		return head_;
 	}
 	Node* getTail()
 	{
-		if (size_ < 1)
-		{
-			throw std::runtime_error("Container is empty");
-		}
 		return tail_;
 	}
 	const Node* getTail() const
