@@ -56,10 +56,10 @@ private:
             }
             resize(newCapacity);
         }
-        else if (newSize <= (capacity_ / DOWNSCALE_FACTOR) && newSize >= 1) // Downscale
+        else if (newSize < (capacity_ / DOWNSCALE_FACTOR) && newSize >= 1) // Downscale
         {
             std::size_t newCapacity = std::max<std::size_t>(1, capacity_);
-            while (newCapacity / DOWNSCALE_FACTOR >= newSize)
+            while (newCapacity / DOWNSCALE_FACTOR > newSize)
             {
                 newCapacity /= DOWNSCALE_FACTOR;
             }

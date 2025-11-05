@@ -27,11 +27,12 @@ int main() {
     std::cout << test.getMaxCapacity();
     test.pop();
     test.pop();
+    test.pop();
     std::cout << test.getMaxCapacity();
-    // ABS<int> test2 = std::move(test);
+    ABS<int> test2 = std::move(test);
 
 
-    auto& debugTest = test;
+    auto& debugTest = test2;
     std::cout << "\ndebugginggg --- \n";
     while (debugTest.getSize() != 0 )
     {
