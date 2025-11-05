@@ -57,8 +57,6 @@ private:
         }
         else if (newSize <= (capacity_ / 2) && newSize >= 1) // Downscale
         {
-            std::cout << "im gonna downscale. Do not downscale. Im gonna do it! eughhhhhhhhh\n";
-            printData();
             std::size_t newCapacity = std::max<std::size_t>(1, capacity_);
             while (newCapacity / 2 >= newSize)
             {
