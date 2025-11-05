@@ -51,10 +51,6 @@ public:
 	// Accessors
 	Node* getHead()
 	{
-		if (size_ < 1)
-		{
-			throw std::runtime_error("Container is empty");
-		}
 		return head_;
 	}
 	const Node* getHead() const
@@ -67,10 +63,6 @@ public:
 	}
 	const Node* getTail() const
 	{
-		if (size_ < 1)
-		{
-			throw std::runtime_error("Container is empty");
-		}
 		return tail_;
 	}
 
