@@ -16,6 +16,7 @@ private:
     std::size_t back_ = 0;      // index of the last element (circular)
 
     static constexpr std::size_t SCALE_FACTOR = 2;
+    static constexpr std::size_t DOWNSCALE_FACTOR = 4;
 
     // Passing a negative index gets the element before front
     size_t toRawIndex(int index)
@@ -51,16 +52,16 @@ private:
             std::size_t newCapacity = std::max<std::size_t>(1, capacity_);
             while (newCapacity < newSize)
             {
-                newCapacity *= 2;
+                newCapacity *= SCALE_FACTOR;
             }
             resize(newCapacity);
         }
-        else if (newSize <= (capacity_ / 2) && newSize >= 1) // Downscale
+        else if (newSize <= (capacity_ / DOWNSCALE_FACTOR) && newSize >= 1) // Downscale
         {
             std::size_t newCapacity = std::max<std::size_t>(1, capacity_);
-            while (newCapacity / 2 >= newSize)
+            while (newCapacity / DOWNSCALE_FACTOR >= newSize)
             {
-                newCapacity /= 2;
+                newCapacity /= DOWNSCALE_FACTOR;
             }
             resize(newCapacity);
         }
