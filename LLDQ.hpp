@@ -30,11 +30,11 @@ public:
     // Core Removal Operations
     T popFront() override
     {
-        return list.removeHead();
+        return list.popHead();
     }
     T popBack() override
     {
-        return list.removeTail();
+        return list.popTail();
     }
 
     // Element Accessors

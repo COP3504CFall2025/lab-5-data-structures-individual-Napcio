@@ -22,7 +22,7 @@ public:
     // Deletion
     T dequeue() override
     {
-        return list.removeHead();
+        return list.popHead();
     }
 
     // Access

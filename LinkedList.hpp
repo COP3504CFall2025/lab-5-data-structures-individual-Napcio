@@ -104,8 +104,27 @@ public:
 		size_++;
 	}
 
+
 	// Removal
-	T removeHead()
+	bool removeHead()
+	{
+		if (size_ < 1)
+		{
+			return false;
+		}
+		popHead();
+		return true;
+	}
+	bool removeTail()
+	{
+		if (size_ < 1)
+		{
+			return false;
+		}
+		popTail();
+		return true;
+	}
+	T popHead()
 	{
 		if (size_ < 1)
 		{
@@ -128,7 +147,7 @@ public:
 		size_--;
 		return datum;
 	}
-	T removeTail()
+	T popTail()
 	{
 		if (size_ < 1)
 		{

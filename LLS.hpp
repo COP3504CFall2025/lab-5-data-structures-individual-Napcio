@@ -22,7 +22,7 @@ public:
     // Deletion
     T pop() override
     {
-        return list.removeTail();
+        return list.popTail();
     }
 
     // Access
