@@ -206,6 +206,7 @@ public:
 	{
 		if (this == &other)
 			return *this;
+
 		clear();
 		head_ = other.head_;
 		tail_ = other.tail_;

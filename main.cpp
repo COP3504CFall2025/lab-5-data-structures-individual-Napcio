@@ -18,25 +18,29 @@
 */
 
 int main() {
-    ABS<int> test;
-    test.push(1);
-    test.push(2);
+    ABDQ<int> test;
+    test.pushBack(1);
+    test.pushBack(2);
+    // test.printData();
     std::cout << test.getMaxCapacity();
-    test.push(3);
-    test.push(4);
+    test.pushBack(3);
+    test.pushBack(4);
+    // test.printData();
     std::cout << test.getMaxCapacity();
-    test.pop();
-    test.pop();
-    test.pop();
+    // test.pop();
+    // test.pop();
+    // test.pop();
     std::cout << test.getMaxCapacity();
-    ABS<int> test2 = std::move(test);
+    // ABS<int> test2 = std::move(test);
+    // test.printData();
 
 
-    auto& debugTest = test2;
+    auto& debugTest = test;
     std::cout << "\ndebugginggg --- \n";
     while (debugTest.getSize() != 0 )
     {
-        std::cout << debugTest.pop() << "  ";
+        std::cout << debugTest.popBack() << "  ";
+        // test.printData();
     }
 
     return 0;

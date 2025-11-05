@@ -26,7 +26,7 @@ private:
     }
 
     // Expects size_ and capacity_ to be referring to the old array
-    void resize(std::size_t newCapacity)
+    void resize(std::size_t newCapacity, std::size_t newSize)
     {
         T* newData = new T[newCapacity];
         for (std::size_t i = 0; i < size_ && i < newCapacity; i++) // size_ still has the size of the old data_
@@ -41,7 +41,8 @@ private:
         // Set after transfer so that we can still index the old data_ correctly when transferring data
         capacity_ = newCapacity;
         front_ = 0;
-        back_ = (size_ == 0) ? 0 : size_ - 1;
+        size_t offset = std::abs(static_cast<int>(front_) - static_cast<int>(back_));
+        back_ = (size_ == 0) ? 0 : offset;
     }
 
     // Sets the size of the array, adjusting capacity and reallocating data_ as necessary
@@ -54,7 +55,7 @@ private:
             {
                 newCapacity *= SCALE_FACTOR;
             }
-            resize(newCapacity);
+            resize(newCapacity, newSize);
         }
         else if (newSize < (capacity_ / DOWNSCALE_FACTOR)) // Downscale
         {
@@ -63,7 +64,7 @@ private:
             {
                 newCapacity /= DOWNSCALE_FACTOR;
             }
-            resize(newCapacity);
+            resize(newCapacity, newSize);
         }
         size_ = newSize;
     }
@@ -182,7 +183,8 @@ public:
             throw std::runtime_error("Container is empty");
         }
         T temp = data_[back_];
-        back_ = toRawIndex(back_ - 1 - front_); // Evaluates to back - 1 but wrapped correctly
+        // back_ = (size_ == 1) ? 0 : toRawIndex(size_ - 2); // Evaluates to back - 1 but wrapped correctly
+        back_ = (size_ == 1) ? 0 : (back_ == 0 ? capacity_ - 1 : back_ - 1);
         adjustSize(size_ - 1);
         return temp;
     }
@@ -219,8 +221,8 @@ public:
     void printData()
     {
         std::cout << "-----" << "\n"
-            << "front: " << front_ << "\n"
-            << "back: " << back_ << "\n";
+            << "front: " << front_ << "   size: " << size_ << "\n"
+            << "back: " << back_ << "    capacity: " << capacity_ << "\n";
         for (size_t i = 0; i < capacity_; i++)
         {
             std::cout << data_[i] << "  ";
