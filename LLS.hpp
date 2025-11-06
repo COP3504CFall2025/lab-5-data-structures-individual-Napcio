@@ -28,6 +28,10 @@ public:
     // Access
     T peek() const override
     {
+        if (list.getSize() < 1)
+        {
+            throw std::runtime_error("Container is empty");
+        }
         return list.getTail()->data;
     }
 

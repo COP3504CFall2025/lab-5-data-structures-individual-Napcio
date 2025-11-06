@@ -29,6 +29,10 @@ public:
     // Access
     T peek() const override
     {
+        if (list.getSize() < 1)
+        {
+            throw std::runtime_error("Container is empty");
+        }
         assert(((list.getHead() == nullptr) == (list.getSize() == 0)));
         return list.getHead()->data;
     }
