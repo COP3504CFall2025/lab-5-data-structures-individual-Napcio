@@ -27,21 +27,33 @@ int main() {
     test.pushBack(4);
     // test.printData();
     std::cout << test.getMaxCapacity();
-    // test.pop();
-    // test.pop();
+    test.popFront();
+    test.popFront();
     // test.pop();
     std::cout << test.getMaxCapacity();
-    // ABS<int> test2 = std::move(test);
-    // test.printData();
+    ABDQ<int> test2 = std::move(test);
+    test.printData();
+
+    // LLDQ<int> test;
+    // test.pushBack(1);
+    // test.pushBack(2);
+    // test.pushBack(3);
+    // test.pushBack(4);
+    // test.popFront();
+    // auto test2(std::move(test));
+    // test2.pushFront(5);
+    // std::cout << test2.front() << "\n";
 
 
-    auto& debugTest = test;
+    auto& debugTest = test2;
     std::cout << "\ndebugginggg --- \n";
     while (debugTest.getSize() != 0 )
     {
-        std::cout << debugTest.popBack() << "  ";
+        std::cout << debugTest.popFront() << "  ";
         // test.printData();
     }
+
+    // std::cout << debugTest.front();
 
     return 0;
 }

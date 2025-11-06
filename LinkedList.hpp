@@ -168,6 +168,7 @@ public:
 		for (Node* it = head_; it != nullptr; it = it->next)
 		{
 			delete it->prev;
+			it->prev = nullptr;
 		}
 		delete tail_;
 		head_ = tail_ = nullptr;

@@ -48,7 +48,7 @@ private:
     // Sets the size of the array, adjusting capacity and reallocating data_ as necessary
     void adjustSize(std::size_t newSize)
     {
-        if (newSize > capacity_) // Upscale
+        if (newSize > capacity_ && newSize > size_) // Upscale
         {
             std::size_t newCapacity = std::max<std::size_t>(1, capacity_);
             while (newCapacity < newSize)
@@ -57,7 +57,7 @@ private:
             }
             resize(newCapacity, newSize);
         }
-        else if (newSize < (capacity_ / DOWNSCALE_FACTOR))
+        else if (newSize < (capacity_ / DOWNSCALE_FACTOR) && newSize < size_)
         { // Downscale
             std::size_t newCapacity = std::max<std::size_t>(1, capacity_);
             while (newCapacity / DOWNSCALE_FACTOR > newSize)

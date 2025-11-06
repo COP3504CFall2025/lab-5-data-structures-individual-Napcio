@@ -4,6 +4,7 @@
 #include "LinkedList.hpp"
 #include <stdlib.h>
 #include <stdexcept>
+#include <cassert>
 
 template <typename T>
 class LLQ : public QueueInterface<T> {
@@ -28,6 +29,7 @@ public:
     // Access
     T peek() const override
     {
+        assert(((list.getHead() == nullptr) == (list.getSize() == 0)));
         return list.getHead()->data;
     }
 
